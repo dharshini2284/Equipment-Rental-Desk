@@ -1,0 +1,47 @@
+Name                              Stmts   Miss  Cover   Missing
+---------------------------------------------------------------
+app\__init__.py                       0      0   100%
+app\api\__init__.py                   0      0   100%
+app\api\dependencies.py              40      0   100%
+app\api\errors.py                    52      1    98%   62
+app\api\routes\__init__.py            9      0   100%
+app\api\routes\items.py              37      0   100%
+app\api\routes\loans.py              32      0   100%
+app\api\routes\members.py            47      0   100%
+app\api\routes\notifications.py      14      0   100%
+app\api\routes\system.py             24      0   100%
+app\api\routes\waitlist.py           20      0   100%
+app\api\schemas.py                  214      0   100%
+app\config.py                        23      0   100%
+app\domain\__init__.py                0      0   100%
+app\domain\eligibility.py            25      0   100%
+app\domain\errors.py                 16      0   100%
+app\domain\fees.py                    6      0   100%
+app\domain\item_state.py             37      0   100%
+app\domain\money.py                   4      0   100%
+app\domain\policy.py                 11      0   100%
+app\domain\statuses.py               33      0   100%
+app\domain\timing.py                 23      0   100%
+app\domain\waitlist.py               10      0   100%
+app\logging_config.py                27      0   100%
+app\main.py                          72      1    99%   75
+app\persistence\__init__.py           0      0   100%
+app\persistence\database.py          20      1    95%   20
+app\persistence\models.py            86      0   100%
+app\persistence\queries.py          121      0   100%
+app\persistence\types.py             22      0   100%
+app\reports\__init__.py               0      0   100%
+app\reports\statement_pdf.py         50      3    94%   52-55
+app\seed.py                         124     19    85%   230-231, 249-266, 270
+app\services\__init__.py              0      0   100%
+app\services\borrowing.py            19      0   100%
+app\services\holds.py                32      0   100%
+app\services\items.py                84      1    99%   169
+app\services\loans.py               106      0   100%
+app\services\members.py              96      0   100%
+app\services\notifications.py        56      0   100%
+app\services\payments.py             22      0   100%
+app\services\views.py                61      0   100%
+app\services\waitlist.py             76      0   100%
+---------------------------------------------------------------
+TOTAL                              1751     26    99%
