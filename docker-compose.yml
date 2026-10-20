@@ -1,0 +1,46 @@
+# One-command local stack: PostgreSQL + API + UI.
+#   docker compose up --build
+# UI:  http://localhost:8080      API: http://localhost:8000   Docs: http://localhost:8000/docs
+# If those ports are taken: UI_PORT=8081 API_PORT=8001 docker compose up --build
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rental_desk
+      POSTGRES_USER: rental_desk
+      POSTGRES_PASSWORD: rental_desk_local  # local-only throwaway credential
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rental_desk -d rental_desk"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://rental_desk:rental_desk_local@db:5432/rental_desk
+      CORS_ORIGINS: http://localhost:${UI_PORT:-8080}
+      ALLOW_TEST_CLOCK: "true"
+      LOG_LEVEL: INFO
+      SEED_ON_START: "true"
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # The browser calls the API directly, so this is the host-visible address.
+        VITE_API_BASE_URL: http://localhost:${API_PORT:-8000}
+    ports:
+      - "${UI_PORT:-8080}:80"
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
