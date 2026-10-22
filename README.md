@@ -7,8 +7,7 @@
 | What | URL |
 |---|---|
 | UI | https://rental-desk-dharshini.netlify.app |
-| API base URL | https://rental-desk-api-tuwe.onrender.com/api/v1 |
-| API docs (Swagger UI) | https://rental-desk-api-tuwe.onrender.com/docs (ReDoc at `/redoc`, raw spec at `/openapi.json`) |
+| API docs (Swagger UI) | https://rental-desk-api-tuwe.onrender.com/docs |
 | Health | https://rental-desk-api-tuwe.onrender.com/health |
 
 Deployed 21 Oct 2026: API and PostgreSQL on Render (from `render.yaml`), UI on Netlify (see 5a).
